@@ -15,6 +15,7 @@
 #import "ContactDetails.h"
 #import "MLImageManager.h"
 #import "MLWelcomeViewController.h"
+#import "MLLogInViewController.h"
 #import "ContactsViewController.h"
 #import "MLNewViewController.h"
 #import "MLXEPSlashMeHandler.h"
@@ -465,6 +466,11 @@ static NSMutableSet* _smacksWarningDisplayed;
                 }
             }
         };
+    }
+    else if([segue.identifier isEqualToString:@"showLogin"])
+    {
+        MLLogInViewController* xxx = (MLLogInViewController*)segue.destinationViewController;
+        xxx.tester = @"bla";
     }
     else if([segue.identifier isEqualToString:@"showConversation"])
     {

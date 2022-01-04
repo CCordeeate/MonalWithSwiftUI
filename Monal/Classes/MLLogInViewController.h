@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) IBOutlet UIImageView* topImage;
 @property (weak, nonatomic) IBOutlet UIButton* qrScanButton;
 
+@property (nonatomic, strong) NSString* tester;
 
 -(IBAction) login:(id)sender;
 -(IBAction) registerAccount:(id)sender;
