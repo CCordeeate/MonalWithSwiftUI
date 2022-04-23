@@ -492,8 +492,10 @@ static const int pingFreqencyMinutes = 5;       //about the same Conversations u
     if(account)
     {
         DDLogVerbose(@"got account and cleaning up.. ");
+#ifndef IS_ALPHA
         if(lastConnectedAccount)
             [account unregisterPush];
+#endif
         [account disconnect:YES];
         account = nil;
         DDLogVerbose(@"done cleaning up account ");
@@ -793,6 +795,7 @@ $$
             [xmppAccount enablePush];
 }
 
+#ifndef IS_ALPHA
 //this handler will simply retry the unregisterPush call
 $$class_handler(unregisterPushHandler)
     [[MLXMPPManager sharedInstance] unregisterPush];
@@ -813,6 +816,7 @@ $$
             }
     }
 }
+#endif
 
 
 #pragma mark - share sheet added
