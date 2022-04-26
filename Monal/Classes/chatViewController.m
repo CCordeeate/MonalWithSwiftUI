@@ -481,8 +481,10 @@ enum msgSentState {
     if(self.contact && [self.contact isEqualToContact:contact])
     {
         createTimer(0.5, ^{
-            DDLogInfo(@"Closing chat view, contact was removed...");
-            [self dismissViewControllerAnimated:YES completion:nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                DDLogInfo(@"Closing chat view, contact was removed...");
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:^{}];
+            });
         });
     }
 }
