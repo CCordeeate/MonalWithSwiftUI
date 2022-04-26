@@ -475,6 +475,13 @@ enum msgSentState {
         [self.navBarEncryptToggleButton setEnabled:NO];
 }
 
+-(void) handleContactRemoved:(NSNotification*) notification
+{
+    MLContact* contact = [notification.userInfo objectForKey:@"contact"];
+    if(self.contact && [self.contact isEqualToContact:contact])
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(void) refreshContact:(NSNotification*) notification
 {
     @synchronized(_localMLContactCache) {
@@ -621,6 +628,7 @@ enum msgSentState {
     [nc addObserver:self selector:@selector(handleFiletransferMessageUpdate:) name:kMonalMessageFiletransferUpdateNotice object:nil];
 
     [nc addObserver:self selector:@selector(refreshContact:) name:kMonalContactRefresh object:nil];
+    [nc addObserver:self selector:@selector(handleContactRemoved:) name:kMonalContactRemoved object:nil];
     [nc addObserver:self selector:@selector(updateUIElementsOnAccountChange:) name:kMonalAccountStatusChanged object:nil];
     [nc addObserver:self selector:@selector(updateNavBarLastInteractionLabel:) name:kMonalLastInteractionUpdatedNotice object:nil];
 
