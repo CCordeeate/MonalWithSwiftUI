@@ -482,7 +482,7 @@ enum msgSentState {
     {
         createTimer(0.5, ^{
             DDLogInfo(@"Closing chat view, contact was removed...");
-            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         });
     }
 }
