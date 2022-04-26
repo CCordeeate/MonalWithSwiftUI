@@ -111,8 +111,8 @@ struct ContactDetails: View {
                                             .destructive(
                                                 Text("Yes"),
                                                 action: {
-                                                    contact.obj.removeFromRoster()
-                                                    //self.delegate.dismiss()
+                                                    self.delegate.dismiss()
+                                                    contact.obj.removeFromRoster()      //this will dismiss the chatview via kMonalContactRemoved notification
                                                 }
                                             )
                                         ]
