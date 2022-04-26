@@ -112,7 +112,7 @@ struct ContactDetails: View {
                                                 Text("Yes"),
                                                 action: {
                                                     contact.obj.removeFromRoster()
-                                                    self.delegate.dismiss()
+                                                    //self.delegate.dismiss()
                                                 }
                                             )
                                         ]
