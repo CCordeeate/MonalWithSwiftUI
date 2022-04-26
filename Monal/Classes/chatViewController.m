@@ -479,7 +479,12 @@ enum msgSentState {
 {
     MLContact* contact = [notification.userInfo objectForKey:@"contact"];
     if(self.contact && [self.contact isEqualToContact:contact])
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    {
+        createTimer(0.5, ^{
+            DDLogInfo(@"Closing chat view, contact was removed...");
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        });
+    }
 }
 
 -(void) refreshContact:(NSNotification*) notification
